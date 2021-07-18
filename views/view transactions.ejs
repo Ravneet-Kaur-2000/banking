@@ -1,0 +1,28 @@
+<%- include("includes/header.ejs") -%>
+<div class="transactions">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Sender</th>
+                <th scope="col">Receiver</th>
+                <th scope="col">Amount Transferred</th>
+                <th scope="col">Date & Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if(userData.length!=0){ %>
+            <% userData.forEach((data)=>{ %>
+            <tr>
+            <td><%= data.sender %></td>
+            <td><%= data.receiver %></td>
+            <td><%= data.amount %></td>
+            <td><%= data.date %></td>
+            </tr>
+            <% }) %>
+            <% } %>
+        </tbody>
+        
+    </table>
+</div>
+
+<%- include("includes/footer.ejs") -%>

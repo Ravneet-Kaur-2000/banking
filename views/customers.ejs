@@ -1,0 +1,40 @@
+<%- include("includes/header.ejs") -%>
+<div class="customer">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Account No</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email Id</th>
+                <th scope="col">Balance</th>
+                <% if(check==='yes') { %>
+                <th></th>
+                <% } %>
+            </tr>
+        </thead>
+        <tbody>
+            <% if(userData.length!=0){ %>
+            <% userData.forEach((data)=>{ %>
+            <tr>
+            <td><%= data.Account_no %></td>
+            <td><%= data.Name %></td>
+            <td><%= data.Email_id %></td>
+            <td><%= data.Balance %></td>
+            <% if(check==='yes') { %>
+            <td>
+                    <button  class="click_me "><a href="/transact/<%= data.Account_no %>">View and Transfer</a></button>
+             </td>
+             <% } %>
+            </tr>
+            <% }) %>
+            <% } %>
+        </tbody>
+        
+    </table>
+</div>
+<% if(check==='no') { %>
+    <div class="blank">
+        <button class="click_me"><a href="/transfer-money/<%= id %>"> Tranfer Money </a></button>
+    </div>
+<% } %>
+<%- include("includes/footer.ejs") -%>

@@ -1,0 +1,230 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+/* navbar */
+
+.navbar-light .navbar-brand{
+    color:white;
+    font-size: 2rem;
+    font-weight: bold;
+    padding-left:3rem;
+}
+
+.navbar-light .navbar-nav .nav-link{
+    color:white;
+    font-size:1.25rem;
+}
+.navbar-custom {
+    background-color: #185ADB;
+}
+
+.brand a:hover{
+    color:white !important;
+}
+
+.nav-item{
+    padding-right: 1.25rem;
+}
+
+.nav-item a:hover {
+    border-bottom: 3px solid #EFEFEF;
+    color:#EFEFEF !important;
+}
+  
+.nav-item a.active {
+    border-bottom: 3px solid #EFEFEF;
+    color:#EFEFEF !important;
+}
+
+.navbar-toggler.custom-toggler{
+    border-color:white;
+}
+
+/* features */
+
+.container{
+    box-sizing:border-box;
+}
+
+#feartures{
+    margin-top: 0;
+}
+.big-heading{
+    font-size: 2.5rem;
+    line-height: 1.2;
+    font-weight: bold;
+    color:#185ADB;
+    text-align: left;
+    margin-top: 5.5rem;
+    margin-left:0;
+}
+
+.small-heading{
+    color:#39A2DB;
+    margin-left:0;
+    margin-bottom: 2rem;
+}
+
+#features .container-fluid{
+    background-color: white;
+}
+
+.feature-role{
+    padding: 2%;
+  }
+  
+.image{
+    padding:1% 1% 8% 1%;
+}
+
+/* button */
+
+.click{
+    background-color: white;
+    border:2px solid #185ADB;
+    font-weight:bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:0;
+    border-radius: 0.5rem;
+}
+
+.click_me{
+    background-color: white;
+    border:2px solid #185ADB;
+    font-weight:bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:0 auto;
+    border-radius: 0.5rem;
+    padding:0;
+}
+
+.click a,
+.click_me a{
+   color:#185ADB;
+   padding:0.5rem;
+}
+
+.click a:hover,
+.click_me a:hover{
+    text-decoration: none;
+    color:white;
+    background-color: #185ADB;
+}
+
+/* footer */
+
+.social-icon{
+    padding:2%;
+    color:white;
+}
+
+.container-fluid{
+    text-align: center;
+    padding:1.5% 7%;
+    background-color: #185ADB;
+}
+
+p{
+    color:white;
+}
+
+
+@media (max-width:995px) {
+
+    .small-heading,
+    .big-heading{
+      text-align:center;
+    }
+
+    .click{
+        margin:0 auto;
+    }
+}
+
+
+/* add-user */
+
+.form{
+    margin-top:2rem;
+    margin-bottom: 2rem;
+}
+
+.add-user label,
+.add-user button{
+    display:block;
+}
+
+label{
+    padding:0.3rem;
+    font-size: 1.2rem;
+    font-family:'Open Sans', sans-serif;
+    text-align: left;
+    margin-left: 33.3rem;
+    font-weight: 700;
+}
+
+input{
+    margin-bottom:1rem;
+    text-align:left;
+}
+.add-user{
+    margin:auto;
+    text-align: center;
+}
+
+.add_btn{
+    padding:0.5rem 1rem;
+    text-align:center;
+    background-color: white;
+    color:#185ADB ;
+    border-radius: 0.5rem;
+    border:2px solid #185ADB;
+    margin:0 auto;
+    font-weight:bold;
+}
+
+.add_btn:hover{
+    background-color:#185ADB ;
+    color:white;
+}
+
+
+/* customers table and transfer */
+
+.customer,
+.transactions{
+    margin:3rem;
+}
+
+
+.blank{
+    height:11.5rem;
+}
+
+.transfer label,
+.transfer button{
+    display:block;
+}
+
+.transfer{
+    margin:auto;
+    text-align: center;
+}
+
+.transfer label{
+    padding:0.3rem;
+    font-size: 1.2rem;
+    font-family:'Open Sans', sans-serif;
+    text-align: left;
+    margin-left: 33.3rem;
+    font-weight: 700;
+}
+
+.transfer input{
+    margin-bottom:1rem;
+    text-align:left;
+}
+

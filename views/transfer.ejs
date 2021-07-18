@@ -1,0 +1,31 @@
+<%- include("includes/header.ejs") -%>
+
+<div class="form">
+    <form class="transfer" action="/transfer" method="POST" autocomplete="off">
+        <label for="sender">Sender:</label>
+        <% if(userData.length!=0){ %>
+            <% userData.forEach((data)=>{ %>
+            <% if(data.Account_no==id) { %>
+            <input type="text" name="sender" id="sender" value="<%= data.Name %>" readonly>
+            <% } %>
+            <% }) %>
+        <% } %>
+        <label for="receiver">Receiver:</label>
+        <input list="receivers" name="receiver" id="receiver" autofocus="on" >
+        <datalist id="receivers">
+            <% if(userData.length!=0){ %>
+            <% userData.forEach((data)=>{ %>
+            <% if(data.Account_no!=id) { %>  
+            <option value="<%= data.Name %>">
+            <% } %>
+            <% }) %>
+            <% } %>
+        </datalist>
+
+        <label for="amount_sent">Amount to transfer:</label>
+        <input type="number" name="amount_sent" id="amount_sent">
+        <button class="add_btn" type="submit">Send Money</button>
+    </form>
+</div>
+
+<%- include("includes/footer.ejs") -%>

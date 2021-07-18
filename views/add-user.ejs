@@ -1,0 +1,16 @@
+<%- include("includes/header.ejs") -%>
+<div class="form">
+    <form class="add-user" action="/add" method="POST" >
+        <div class="form_ele">
+            <label for="Name">Full Name:</label>
+            <input type="text" name="Name" id="Name" autocomplete="off" autofocus="on">
+            <label for="email">Email Id:</label>
+            <input type="email" name="email" id="email" autocomplete="off">
+            <label for="amount">Total Balance:</label>
+            <input type="number" name="amount" id="amount">
+            <button class="add_btn" type="submit">Add User</button>
+        </div>
+    </form>
+</div>
+
+<%- include("includes/footer.ejs") -%>
