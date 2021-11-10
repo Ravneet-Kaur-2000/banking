@@ -17,7 +17,8 @@ app.get("/", (req,res) =>{
 });
 
 app.get("/customers" , (req,res) =>{
-    db.execute("SELECT * FROM customers").then(([rows,fieldData])=>{ 
+    db.execute("SELECT * FROM customers")
+    .then(([rows,fieldData])=>{ 
         res.render('customers',{title:"List of Customers" ,userData:rows,check:"yes",path:"/customers"});
     })
     .catch(err=>{ 
@@ -33,7 +34,8 @@ app.get("/add-user", (req,res) =>{
 app.post("/add" ,(req,res) =>{
     const user=req.body;
     const userDetail=[user.Name,user.email,user.amount];
-    db.execute("INSERT INTO customers (Name, Email_id, Balance) VALUES(?,?,?)",userDetail).then(() =>{ 
+    db.execute("INSERT INTO customers (Name, Email_id, Balance) VALUES(?,?,?)",userDetail)
+    .then(() =>{ 
         res.send('<script>alert("User added successfully!!");location.href="/customers"</script>');
     })
     .catch(err=>{ 
@@ -43,11 +45,10 @@ app.post("/add" ,(req,res) =>{
 });
 
 
-
-
 app.get("/transact/:id", (req,res) =>{
     const id=req.params.id;
-    db.execute("SELECT * FROM customers WHERE Account_no= ?",[id]).then(([rows,fieldData])=>{ 
+    db.execute("SELECT * FROM customers WHERE Account_no= ?",[id])
+    .then(([rows,fieldData])=>{ 
         res.render('customers',{title:"View and Transact" ,userData:rows,check:'no',path:"/transact",id:id});
     })
     .catch(err=>{ 
@@ -75,45 +76,40 @@ app.post("/transfer", (req,res) =>{
     const send=user.sender;
     const rec=user.receiver;
     const arr=[];
-    db.execute("SELECT * FROM customers WHERE name= ?",[send]).then(([rows,fieldData])=>{ 
+    let remain
+    db.execute("SELECT * FROM customers WHERE name= ?",[send])
+    .then(([rows,fieldData])=>{ 
         if(rows[0].Balance >user.amount_sent)
         {
-            let remain=rows[0].Balance-user.amount_sent;
-            db.execute("SELECT * FROM customers WHERE name= ?",[rec]).then(([rows,fieldData])=>{
-                let x=Number(rows[0].Balance);
-                let y=Number(user.amount_sent);
-                const increase=x+y;
-                db.execute('UPDATE customers SET Balance ='+increase+' WHERE name= ?',[rec]).then(() =>{
-                   
-                }).catch(err=>{
-                    console.log(error);
-                });
-            }).catch(err=>{
-                console.log(err);
-            })
-            db.execute('UPDATE customers SET Balance ='+remain+' WHERE name= ?',[send]).then(()=>{
-                const userDetail=[user.sender,user.receiver,user.amount_sent,date_time];
-                db.execute("INSERT INTO transactions (sender, receiver, amount,date) VALUES(?,?,?,?)",userDetail).then(() =>{ 
-                    res.send('<script>alert("Transaction successfull!");location.href="/view-transactions"</script>');
-                })
-                .catch(err=>{ 
-                    console.log(err);
-                });
-
-            }).catch(err=>{
-                console.log(err);
-            })
-        }else{
-            res.send('<script>alert("Insufficient balance available");location.href="/"</script>');
+            remain=rows[0].Balance-user.amount_sent;
+            return db.execute("SELECT * FROM customers WHERE name= ?",[rec])
         }
     })
-    .catch(err=>{ 
-        console.log(err)
+    .then(([rows,fieldData])=>{
+        let x=Number(rows[0].Balance);
+        let y=Number(user.amount_sent);
+        const increase=x+y;
+        return db.execute('UPDATE customers SET Balance ='+increase+' WHERE name= ?',[rec])
+    })
+    .then(() =>{
+        return db.execute('UPDATE customers SET Balance ='+remain+' WHERE name= ?',[send])
+    })
+    .then(()=>{
+        const userDetail=[user.sender,user.receiver,user.amount_sent,date_time];
+        return db.execute("INSERT INTO transactions (sender, receiver, amount,date) VALUES(?,?,?,?)",userDetail)
+    })
+    .then(() =>{ 
+         res.send('<script>alert("Transaction successfull!");location.href="/view-transactions"</script>');
+    })      
+    .catch(err=>{
+        console.log(err);
+        res.send('<script>alert("Insufficient balance available");location.href="/"</script>');
     });
-})
+});
 
 app.get("/view-transactions",(req,res) =>{
-    db.execute("SELECT * FROM transactions").then(([rows,fieldData])=>{ 
+    db.execute("SELECT * FROM transactions")
+    .then(([rows,fieldData])=>{ 
         res.render('view transactions',{title:"View Transactions" ,userData:rows,path:"/view-transactions"});
     })
     .catch(err=>{ 
