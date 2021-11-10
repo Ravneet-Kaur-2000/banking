@@ -2,16 +2,16 @@
 
 <div class="form">
     <form class="transfer" action="/transfer" method="POST" autocomplete="off">
-        <label for="sender">Sender:</label>
+        <label for="sender">Sender:</label><br>
         <% if(userData.length!=0){ %>
             <% userData.forEach((data)=>{ %>
             <% if(data.Account_no==id) { %>
-            <input type="text" name="sender" id="sender" value="<%= data.Name %>" readonly>
+            <input type="text" name="sender" id="sender" value="<%= data.Name %>" readonly><br>
             <% } %>
             <% }) %>
         <% } %>
-        <label for="receiver">Receiver:</label>
-        <input list="receivers" name="receiver" id="receiver" autofocus="on" >
+        <label for="receiver">Receiver:</label><br>
+        <input list="receivers" name="receiver" id="receiver" autofocus="on" ><br>
         <datalist id="receivers">
             <% if(userData.length!=0){ %>
             <% userData.forEach((data)=>{ %>
@@ -22,8 +22,8 @@
             <% } %>
         </datalist>
 
-        <label for="amount_sent">Amount to transfer:</label>
-        <input type="number" name="amount_sent" id="amount_sent">
+        <label for="amount_sent">Amount to transfer:</label><br>
+        <input type="number" name="amount_sent" id="amount_sent"><br>
         <button class="add_btn" type="submit">Send Money</button>
     </form>
 </div>

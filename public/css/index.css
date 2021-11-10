@@ -132,18 +132,6 @@ p{
 }
 
 
-@media (max-width:995px) {
-
-    .small-heading,
-    .big-heading{
-      text-align:center;
-    }
-
-    .click{
-        margin:0 auto;
-    }
-}
-
 
 /* add-user */
 
@@ -152,17 +140,12 @@ p{
     margin-bottom: 2rem;
 }
 
-.add-user label,
-.add-user button{
-    display:block;
-}
 
 label{
     padding:0.3rem;
     font-size: 1.2rem;
     font-family:'Open Sans', sans-serif;
-    text-align: left;
-    margin-left: 33.3rem;
+    text-align: center;
     font-weight: 700;
 }
 
@@ -204,10 +187,6 @@ input{
     height:11.5rem;
 }
 
-.transfer label,
-.transfer button{
-    display:block;
-}
 
 .transfer{
     margin:auto;
@@ -218,8 +197,7 @@ input{
     padding:0.3rem;
     font-size: 1.2rem;
     font-family:'Open Sans', sans-serif;
-    text-align: left;
-    margin-left: 33.3rem;
+    text-align: center;
     font-weight: 700;
 }
 
@@ -228,3 +206,16 @@ input{
     text-align:left;
 }
 
+
+
+@media (max-width:995px) {
+
+    .small-heading,
+    .big-heading{
+      text-align:center;
+    }
+
+    .click{
+        margin:0 auto;
+    }
+}
