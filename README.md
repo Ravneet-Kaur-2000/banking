@@ -20,3 +20,10 @@
 * CSS
 * Node.js
 * MySQL
+
+### Screenshots
+<img src="public/images/bank1.png" alt="Logo">
+<img src="public/images/bank2.png" alt="Logo">
+<img src="public/images/bank3.png" alt="Logo">
+<img src="public/images/bank4.png" alt="Logo">
+<img src="public/images/bank5.png" alt="Logo">
