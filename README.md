@@ -14,7 +14,7 @@
 * EJS templates are used to render dynamic content, including forms for user input and tables for displaying data. 
 * The frontend features a user-friendly interface with buttons and links to navigate between different functionalities, enhancing user interaction and experience.
 
-### Technology Used
+### Tech Stack
 
 * HTML
 * CSS
